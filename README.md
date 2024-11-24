@@ -1,44 +1,52 @@
-import os
-import random
-import string
-
-# Membersihkan layar
-os.system("cls")  # WIN
-# os.system("clear")  # mac/linux
-
-print(f" {'DATA PEMAIN BADMINTON':#^35}")
-
-data = dict()
-
-while True:
-    # Membuat kunci acak
-    keyFinal = "".join(random.choice(string.ascii_uppercase) for i in range(3))
+def cerita_interaktif():
+    print("Selamat datang di cerita interaktif!")
+    print("Kamu adalah seorang petualang yang sedang menjelajahi hutan ajaib.")
+    print("Di depanmu ada dua jalan yang bisa kamu pilih.")
+    print("1. Jalan ke kiri")
+    print("2. Jalan ke kanan")
     
-    # Mengambil input dari pengguna
-    nama = input("Enter nama pemain\t: ")
-    kategori = input("Enter kategori (misal: Tunggal, Ganda): ")
-    bahasa = input("Enter Rank\t: ")
+    pilihan = input("Pilih jalan (1 atau 2): ")
     
-    # Menyimpan data dalam dictionary
-    data[keyFinal] = {
-        'nama': nama,
-        'kategori': kategori,
-        'bahasa': bahasa
-    }
-    
-    # Menanyakan apakah ingin input data lagi
-    opsi = input("Input data LAGI (y/t) : ").lower()
-    if opsi == 't':
-        break
-  
-# Menampilkan hasil data
-print("-" * 40)
-print(f"{'Key':<5} {'Nama Pemain':<20} {'Kategori':<15} {'Rank':<15}")
-print("-" * 40)
-for k, v in data.items():
-    print(f"{k:<5} {v['nama']:<20} {v['kategori']:<15} {v['Rank']:<15}")
+    if pilihan == "1":
+        jalan_kiri()
+    elif pilihan == "2":
+        jalan_kanan()
+    else:
+        print("Pilihan tidak valid. Silakan coba lagi.")
+        cerita_interaktif()
 
-# Menampilkan semua data
-print("-" * 40)
-print("Data lengkap pemain:")
-print(data)
+def jalan_kiri():
+    print("Kamu memilih jalan ke kiri.")
+    print("Setelah berjalan beberapa langkah, kamu menemukan sebuah danau yang indah.")
+    print("Di tepi danau, ada seorang penyihir yang menawarkanmu dua pilihan.")
+    print("1. Minta kekuatan sihir")
+    print("2. Minta petunjuk untuk menemukan harta karun")
+    
+    pilihan = input("Apa yang kamu pilih? (1 atau 2): ")
+    
+    if pilihan == "1":
+        print("Kamu mendapatkan kekuatan sihir! Sekarang kamu bisa melakukan hal-hal luar biasa.")
+    elif pilihan == "2":
+        print("Penyihir memberikan peta menuju harta karun. Kamu pun berpetualang menemukannya!")
+    else:
+        print("Pilihan tidak valid. Silakan coba lagi.")
+        jalan_kiri()
+
+def jalan_kanan():
+    print("Kamu memilih jalan ke kanan.")
+    print("Setelah berjalan, kamu bertemu dengan seekor naga yang sedang tidur.")
+    print("Kamu bisa:")
+    print("1. Berusaha membangunkan naga")
+    print("2. Menghindari naga dan melanjutkan perjalanan")
+    
+    pilihan = input("Apa yang kamu pilih? (1 atau 2): ")
+    
+    if pilihan == "1":
+        print("Naga terbangun dan marah! Tapi, kamu berhasil menjalin persahabatan dengannya.")
+    elif pilihan == "2":
+        print("Kamu berhasil melewati naga dan menemukan jalan menuju desa yang aman.")
+    else:
+        print("Pilihan tidak valid. Silakan coba lagi.")
+        jalan_kanan()
+
+cerita_interaktif()
